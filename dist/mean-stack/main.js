@@ -354,8 +354,6 @@ var PostCreateComponent = /** @class */ (function () {
         this.enteredTitle = '';
         this.enteredContent = '';
     }
-    PostCreateComponent.prototype.ngOnInit = function () {
-    };
     PostCreateComponent.prototype.onAddPost = function () {
         var post = { title: this.enteredTitle, content: this.enteredContent };
         this.postService.addPost(post);
