@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { PostService } from '../../post.service';
+import { NgForm } from '@angular/forms';
+
+import { PostService } from '../post.service';
 import { Post } from '../post.model';
 
 @Component({
@@ -8,26 +10,26 @@ import { Post } from '../post.model';
   styleUrls: ['./post-create.component.scss']
 })
 export class PostCreateComponent {
-  enteredTitle: string = '';
-  enteredContent: string = '';
 
   constructor(private postService: PostService) { }
 
-  onAddPost() {
-    const post: Post = { title: this.enteredTitle, content: this.enteredContent };
+  onAddPost(form: NgForm) {
+    if (form.invalid) {
+      return;
+    }
+
+    const post: Post = {
+      title: form.value.title,
+      content: form.value.content
+    };
 
     this.postService.addPost(post);
 
-    this.clearForm();
+    form.resetForm();
   }
 
-  onClearForm() {
-    this.clearForm();
-  }
-
-  clearForm() {
-    this.enteredTitle = '';
-    this.enteredContent = '';
+  clearForm(form: NgForm) {
+    form.resetForm();
   }
 
 }
