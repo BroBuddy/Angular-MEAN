@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-form-field>
+    <input matInput placeholder="Post title" type="text" [(ngModel)]="enteredTitle" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <textarea matInput placeholder="Post content" [(ngModel)]="enteredContent" cols="20" rows="5"></textarea>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="onAddPost(postInput)">Add post</button>
+
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onClearForm()">Clear form</button>
+</mat-card>
